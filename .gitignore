@@ -1,16 +1,7 @@
 *.iml
 .gradle
 /local.properties
-<<<<<<< HEAD
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-=======
 /.idea
->>>>>>> e4b1e04 (Remove Idea folder)
 .DS_Store
 /build
 /captures
