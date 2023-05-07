@@ -3,8 +3,13 @@
 
     <style name="Theme.SplashTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
+<<<<<<< HEAD
         <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
         <item name="windowSplashScreenAnimationDuration">400</item>
+=======
+        <item name="windowSplashScreenAnimatedIcon">@drawable/m_logo</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+>>>>>>> 7c92786 (Created splash screen)
         <item name="postSplashScreenTheme">@style/Theme.XGuide</item>
     </style>
 </resources>
