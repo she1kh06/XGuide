@@ -1,9 +1,10 @@
 package com.example.xguide.domain
 
 interface Repository {
-    suspend fun addPackage(item: PackageEntity)
-    suspend fun deletePackage(position: Int)
-    suspend fun getPackage(position: Int): PackageEntity
-    suspend fun getPackagePosition(item: PackageEntity): Int
-    suspend fun addPackageList(entityList: List<PackageEntity>)
+    suspend fun addNode(item: Node, parent: Node)
+    suspend fun deleteNode(name: String)
+    suspend fun getNode(name: String): Node
+    suspend fun addNodeList(entityList: List<Node>, parent: Node)
+
+    fun generateNodeName(): String
 }

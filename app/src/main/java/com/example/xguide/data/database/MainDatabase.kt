@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.xguide.data.database.db_model.PackageDbModel
+import com.example.xguide.data.database.db_model.NodeDbModel
 
-@Database(entities = [PackageDbModel::class], version = 1, exportSchema = false)
+@Database(entities = [NodeDbModel::class], version = 1, exportSchema = false)
 abstract class MainDatabase : RoomDatabase() {
 
 

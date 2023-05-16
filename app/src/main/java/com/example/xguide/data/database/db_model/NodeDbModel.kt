@@ -7,10 +7,11 @@ import com.example.xguide.data.converters.DataConverter
 
 @Entity(tableName = "main_table")
 @TypeConverters(value = [DataConverter::class])
-data class PackageDbModel(
+data class NodeDbModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-
     val name: String,
-    val position: Int
-)
+    var parent: NodeDbModel? = null
+) {
+    val children = mutableListOf<NodeDbModel>()
+}

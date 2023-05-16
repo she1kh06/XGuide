@@ -3,37 +3,64 @@ package com.example.xguide.data
 import android.content.Context
 import com.example.xguide.data.converters.Mapper
 import com.example.xguide.data.database.MainDatabase
-import com.example.xguide.domain.PackageEntity
+import com.example.xguide.data.database.db_model.NodeDbModel
+import com.example.xguide.domain.Node
 import com.example.xguide.domain.Repository
+import java.security.MessageDigest
 
 class RepositoryImpl(private val context: Context) : Repository {
 
     private val db = MainDatabase.getInstance(context).getDao()
     private val mapper = Mapper()
 
-    override suspend fun addPackage(item: PackageEntity) {
+    override suspend fun addNode(item: Node, parent: Node) {
         db.addItem(
-            mapper.mapEntityToDbModel(item)
+            mapper.mapEntityToDbModel(
+                parent.apply {
+                    parent.children.add(item)
+                }
+            )
         )
     }
 
-    override suspend fun deletePackage(position: Int) {
-        db.deleteItem(position)
+    override suspend fun deleteNode(name: String) {
+        db.deleteItem(name)
     }
 
-    override suspend fun getPackage(position: Int): PackageEntity {
+    override suspend fun getNode(name: String): Node {
         return mapper.mapDbModelToEntity(
-            db.getItem(position)
+            db.getItem(name)
         )
     }
 
-    override suspend fun getPackagePosition(item: PackageEntity): Int {
-        return 1
-    }
+    override suspend fun addNodeList(entityList: List<Node>, parent: Node) {
+        parent.children.addAll(entityList)
 
-    override suspend fun addPackageList(entityList: List<PackageEntity>) {
         db.addItemsList(
-            mapper.mapEntityListToDbModelList(entityList)
+            mapper.mapEntityListToDbModelList(parent.children)
         )
+    }
+
+    override fun generateNodeName(): String {
+        val input = "node${System.currentTimeMillis()}"
+        val md = MessageDigest.getInstance("SHA-256")
+        val hashBytes = md.digest(input.toByteArray()).takeLast(20).toByteArray()
+        return hashBytes.joinToString("") { "%02x".format(it) }
+    }
+
+    private fun createTree() {
+        val rootNode = NodeDbModel(name = generateNodeName())
+        for (element in 1..5) {
+            val child = NodeDbModel(name = generateNodeName(), parent = rootNode)
+            rootNode.children.add(child)
+        }
+
+        for (child in rootNode.children) {
+            for (i in 0..2) {
+                val grandChildren = NodeDbModel(name = generateNodeName(), parent = child)
+                child.children.add(grandChildren)
+            }
+        }
+
     }
 }
