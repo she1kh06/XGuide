@@ -1,7 +1,9 @@
 package com.example.xguide.domain
 
+import kotlinx.coroutines.NonDisposableHandle.parent
+
 class AddNodeUseCase(private val repository: Repository) {
-    suspend fun addNode(item: Node, parent: Node) {
-        repository.addNode(item, parent)
+    suspend fun addNode(item: Node) {
+        repository.addNode(item)
     }
 }

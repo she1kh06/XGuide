@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">XGuide</string>
+    <string name="folder_logo">Folder Logo</string>
+    <string name="description">Theere will be the name of folder which will consist array of letters</string>
 </resources>

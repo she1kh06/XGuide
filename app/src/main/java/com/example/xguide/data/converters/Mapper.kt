@@ -4,10 +4,10 @@ import com.example.xguide.data.database.db_model.NodeDbModel
 import com.example.xguide.domain.Node
 
 class Mapper {
-    fun mapEntityToDbModel(packageEntity: Node): NodeDbModel {
+    fun mapEntityToDbModel(nodeEntity: Node): NodeDbModel {
         return NodeDbModel(
-            name = packageEntity.name,
-            parent = packageEntity.parent?.let { mapEntityToDbModel(it) }
+            name = nodeEntity.name,
+            parent = nodeEntity.parent?.let { mapEntityToDbModel(it) }
         )
     }
 
