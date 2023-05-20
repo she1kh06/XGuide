@@ -1,4 +1,4 @@
-package com.example.webapplication.presentation.adapter
+package com.example.xguide.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.xguide.domain.Node

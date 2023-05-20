@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.webapplication.presentation.adapter.NodeItemDiffCallback
 import com.example.xguide.R
 import com.example.xguide.domain.Node
 
@@ -15,15 +14,24 @@ class NodeAdapter : ListAdapter<Node, NodeAdapter.MyViewHolder>(NodeItemDiffCall
 
     private lateinit var context: Context
 
-    private lateinit var mClickListener: onItemClickListener
-    var onShopItemLongClickListener: ((Node) -> Unit)? = null
+    private lateinit var mClickListener: OnItemClickListener
+    private lateinit var mLongClickListener: OnItemLongClickListener
 
-    interface onItemClickListener {
+    interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
 
-    fun setOnItemClickListener(listener: onItemClickListener) {
+    interface OnItemLongClickListener {
+        fun onItemLongClick(position: Int)
+    }
+
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
         mClickListener = listener
+    }
+
+    fun setOnItemLongClickListener(listener: OnItemLongClickListener) {
+        mLongClickListener = listener
     }
 
 
@@ -44,17 +52,16 @@ class NodeAdapter : ListAdapter<Node, NodeAdapter.MyViewHolder>(NodeItemDiffCall
         with(holder) {
             tvFolderName.text = item.name
 
-            holder.itemView.setOnLongClickListener {
-                onShopItemLongClickListener?.invoke(item)
+            itemView.setOnLongClickListener {
+                mLongClickListener.onItemLongClick(adapterPosition)
                 true
             }
-
         }
     }
 
     inner class MyViewHolder(
         itemView: View,
-        listener: onItemClickListener
+        listener: OnItemClickListener
     ) :
         RecyclerView.ViewHolder(itemView) {
         val tvFolderName: TextView = itemView.findViewById(R.id.tv_folder_name)

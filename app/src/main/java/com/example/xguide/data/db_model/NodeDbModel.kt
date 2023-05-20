@@ -1,4 +1,4 @@
-package com.example.xguide.data.database.db_model
+package com.example.xguide.data.db_model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

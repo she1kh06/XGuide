@@ -1,6 +1,6 @@
 package com.example.xguide.domain
 
-import com.example.xguide.data.database.db_model.NodeDbModel
+import com.example.xguide.data.db_model.NodeDbModel
 
 data class Node(
     val name: String,
