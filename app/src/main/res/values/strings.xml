@@ -2,4 +2,12 @@
     <string name="app_name">XGuide</string>
     <string name="folder_logo">Folder Logo</string>
     <string name="description">Theere will be the name of folder which will consist array of letters</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="folder_name">Folder Name</string>
+    <string name="add_new_node">Add new node</string>
+    <string name="delete_request">Delete this item</string>
+    <string name="delete_item">Delete item</string>
+    <string name="item_has_deleted">Item has been deleted</string>
+    <string name="delete_canceled">Item delete canceled</string>
 </resources>

@@ -5,45 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".presentation.MainActivity">
+    tools:context=".presentation.screens.MainActivity">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVerticalTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineVerticalBottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHorizontalStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.04" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineHorizontalEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.96" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rc_folders"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineVerticalBottom"
-        app:layout_constraintEnd_toEndOf="@id/guidelineHorizontalEnd"
-        tools:listitem="@layout/folder_item"
-        app:layout_constraintStart_toStartOf="@id/guidelineHorizontalStart"
-        app:layout_constraintTop_toTopOf="@id/guidelineVerticalTop" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

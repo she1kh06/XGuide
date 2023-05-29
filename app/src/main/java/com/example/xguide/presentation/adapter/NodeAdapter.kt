@@ -22,7 +22,7 @@ class NodeAdapter : ListAdapter<Node, NodeAdapter.MyViewHolder>(NodeItemDiffCall
     }
 
     interface OnItemLongClickListener {
-        fun onItemLongClick(position: Int)
+        fun onItemLongClick(node: Node)
     }
 
 
@@ -53,7 +53,7 @@ class NodeAdapter : ListAdapter<Node, NodeAdapter.MyViewHolder>(NodeItemDiffCall
             tvFolderName.text = item.name
 
             itemView.setOnLongClickListener {
-                mLongClickListener.onItemLongClick(adapterPosition)
+                mLongClickListener.onItemLongClick(item)
                 true
             }
         }

@@ -1,17 +1,17 @@
 package com.example.xguide.data.db_model
 
+import com.example.xguide.data.converters.TreeConverter
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.xguide.data.converters.DataConverter
 
 @Entity(tableName = "main_table")
-@TypeConverters(value = [DataConverter::class])
-data class NodeDbModel(
+@TypeConverters(value = [TreeConverter::class])
+data class MainNodeDbModel(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val name: String,
-    var parent: NodeDbModel? = null
+    var parent: MainNodeDbModel? = null
 ) {
-    val children = mutableListOf<NodeDbModel>()
+    var children = mutableListOf<MainNodeDbModel>()
 }
