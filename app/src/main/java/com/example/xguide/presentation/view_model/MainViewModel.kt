@@ -41,7 +41,7 @@ class MainViewModel(context: Context) : ViewModel(), Navigation {
         get() = _ldParentTree
 
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
-
+    
     override fun toChildren(position: Int) {
         if (isRootNode) {
             _ldChildrenTree.value = rootNode.children
