@@ -2,6 +2,7 @@ package com.example.xguide.data
 
 import android.content.Context
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import com.example.xguide.data.converters.Mapper
 import com.example.xguide.data.database.CurrentTreeDatabase
 import com.example.xguide.data.database.MainDatabase
@@ -85,20 +86,15 @@ class RepositoryImpl(private val context: Context) : Repository {
         return mapper.mapDbModelToEntity(rootNode)
     }
 
-    override suspend fun getCurrentPosition(): Int {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun setCurrentPosition(position: Int) {
-        TODO("Not yet implemented")
-    }
-
     override suspend fun setCurrentTree(tree: Node) {
-        TODO("Not yet implemented")
+        current_tree_db.setCurrentItem(
+            mapper.mapEntityToCurrentTree(tree)
+        )
     }
 
-    override suspend fun getCurrentTree(): LiveData<Node> {
-        TODO("Not yet implemented")
+    override suspend fun getCurrentTree() = MediatorLiveData<Node>().apply {
+        addSource(current_tree_db.getCurrentItem()) {
+            value = mapper.mapCurrentTreeToEntity(it)
+        }
     }
-
 }

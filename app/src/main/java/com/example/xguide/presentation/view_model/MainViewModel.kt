@@ -19,8 +19,6 @@ class MainViewModel(context: Context) : ViewModel(), Navigation {
     private val addNodeUseCase = AddNodeUseCase(repository)
     private val deleteNodeUseCase = DeleteNodeUseCase(repository)
     private val getNodeUseCase = GetNodeUseCase(repository)
-    private val getCurrentPositionUseCase = GetCurrentPositionUseCase(repository)
-    private val setCurrentPositionUseCase = SetCurrentPositionUseCase(repository)
     private val getCurrentTreeUseCase = GetCurrentTreeUseCase(repository)
     private val setCurrentTreeUseCase = SetCurrentTreeUseCase(repository)
     private val generateNodeNameUseCase = GenerateNodeNameUseCase(repository)
@@ -34,7 +32,7 @@ class MainViewModel(context: Context) : ViewModel(), Navigation {
 
     val nodes = listOf(currentTree)
 
-    private val _ldChildrenTree = MutableLiveData<List<Node>>()
+    private var _ldChildrenTree = MutableLiveData<List<Node>>()
     val ldChildrenTree: LiveData<List<Node>>
         get() = _ldChildrenTree
 
@@ -57,6 +55,10 @@ class MainViewModel(context: Context) : ViewModel(), Navigation {
                 _ldChildrenTree.value = listOf(currentItem)
             }
             this.position = position
+
+            coroutineScope.launch {
+                setCurrentTreeUseCase.setCurrentTree(currentTree)
+            }
         }
     }
 

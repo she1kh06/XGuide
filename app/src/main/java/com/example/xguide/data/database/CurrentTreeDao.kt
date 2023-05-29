@@ -1,5 +1,6 @@
 package com.example.xguide.data.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
@@ -11,6 +12,5 @@ interface CurrentTreeDao {
     suspend fun setCurrentItem(item: CurrentTreeDbModel)
 
     @Query("SELECT * FROM currentTreeTable LIMIT 1")
-    suspend fun getCurrentItem(): CurrentTreeDbModel
-
+    suspend fun getCurrentItem(): LiveData<CurrentTreeDbModel>
 }

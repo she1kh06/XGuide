@@ -23,5 +23,5 @@ abstract class CurrentTreeDatabase : RoomDatabase() {
         }
     }
 
-    abstract fun getDao(): CurrentTreeDatabase
+    abstract fun getDao(): CurrentTreeDao
 }

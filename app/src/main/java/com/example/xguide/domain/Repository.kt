@@ -11,10 +11,6 @@ interface Repository {
 
     suspend fun addNodeList(entityList: List<Node>, parent: Node)
 
-    suspend fun getCurrentPosition(): Int
-
-    suspend fun setCurrentPosition(position: Int)
-
     suspend fun setCurrentTree(tree: Node)
     suspend fun getCurrentTree(): LiveData<Node>
 
