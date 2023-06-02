@@ -12,7 +12,7 @@
         android:theme="@style/Theme.SplashTheme"
         tools:targetApi="31" >
         <activity
-            android:name=".NodeInfoActivity"
+            android:name=".presentation.screens.NodeInfoFragment"
             android:exported="false" />
         <activity
             android:name=".presentation.screens.MainActivity"
